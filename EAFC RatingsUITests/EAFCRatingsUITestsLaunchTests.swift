@@ -7,9 +7,9 @@
 
 import XCTest
 
-final class EAFC_RatingsUITestsLaunchTests: XCTestCase {
+final class EAFCRatingsUITestsLaunchTests: XCTestCase {
 
-    override class var runsForEachTargetApplicationUIConfiguration: Bool {
+    override static var runsForEachTargetApplicationUIConfiguration: Bool {
         true
     }
 
