@@ -5,8 +5,10 @@ Aplicación iOS que consume la API oficial de EA Sports para mostrar ratings y e
 ## 📱 App Overview
 
 | Demo |
-| :--- | :--- |
-| <video src="demo.mp4" width="280" autoplay loop muted></video>
+<div align="center">
+  <video src="demo.mp4" width="350" autoplay loop muted playsinline>
+  </video>
+</div>
 
 ## 📋 Características
 
