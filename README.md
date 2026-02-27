@@ -2,6 +2,12 @@
 
 Aplicación iOS que consume la API oficial de EA Sports para mostrar ratings y estadísticas de jugadores de FIFA/EAFC, con soporte offline y paginación.
 
+## 📱 App Overview
+
+| Demo |
+| :--- | :--- |
+| <video src="demo.mp4" width="280" autoplay loop muted></video>
+
 ## 📋 Características
 
 - ✅ Listado de jugadores con paginación infinita
