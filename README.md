@@ -4,11 +4,10 @@ Aplicación iOS que consume la API oficial de EA Sports para mostrar ratings y e
 
 ## 📱 App Overview
 
-| Demo |
-<div align="center">
-  <video src="demo.mp4" width="350" autoplay loop muted playsinline>
-  </video>
-</div>
+
+https://github.com/user-attachments/assets/0a709c0c-1118-404f-b98d-caace58221dc
+
+
 
 ## 📋 Características
 
@@ -29,7 +28,7 @@ Aplicación iOS que consume la API oficial de EA Sports para mostrar ratings y e
 ### Requisitos
 
 - Xcode 26.0+
-- iOS 17.0+
+- iOS 26+
 - Swift 5.9+
 
 ### Pasos
@@ -152,7 +151,6 @@ final class PlayerListState {
 
 **Beneficios:**
 - Elimina copias innecesarias de structs grandes
-- Preparado para `@IncrementalState` (redibujados quirúrgicos en listas)
 - Reference semantics apropiados para estado mutable
 
 #### 3. **Swift Concurrency sobre Combine**
