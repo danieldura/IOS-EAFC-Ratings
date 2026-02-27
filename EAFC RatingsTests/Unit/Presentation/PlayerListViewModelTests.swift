@@ -10,6 +10,7 @@ import Foundation
 import Testing
 
 @MainActor
+@Suite("PlayerListViewModel Tests")
 struct PlayerListViewModelTests {
 
     // MARK: - Test Initial State

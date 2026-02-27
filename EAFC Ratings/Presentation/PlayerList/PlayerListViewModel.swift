@@ -6,24 +6,24 @@
 //
 
 import Foundation
-import Combine
+import SwiftUI
 
 @MainActor
-final class PlayerListViewModel: ObservableObject {
+@Observable
+final class PlayerListViewModel {
 
-    // MARK: - Published State
-    @Published private(set) var state = PlayerListState()
+    // MARK: - State
+    private(set) var state = PlayerListState()
 
     // MARK: - Dependencies
     private let getPlayersUseCase: GetPlayersUseCaseProtocol
 
     // MARK: - Private Properties
     private var allPlayers: [Player] = []
-    private var cancellables = Set<AnyCancellable>()
+    private var searchTask: Task<Void, Never>?
 
     init(getPlayersUseCase: GetPlayersUseCaseProtocol) {
         self.getPlayersUseCase = getPlayersUseCase
-        setupSearchDebounce()
     }
 
     // MARK: - Intent Handler
@@ -105,17 +105,16 @@ final class PlayerListViewModel: ObservableObject {
 
     private func updateSearchText(_ text: String) {
         state.searchText = text
-    }
 
-    private func setupSearchDebounce() {
-        $state
-            .map(\.searchText)
-            .debounce(for: .milliseconds(300), scheduler: DispatchQueue.main)
-            .removeDuplicates()
-            .sink { [weak self] searchText in
-                self?.performSearch(searchText)
-            }
-            .store(in: &cancellables)
+        // Cancel previous search task
+        searchTask?.cancel()
+
+        // Debounce with Swift Concurrency
+        searchTask = Task {
+            try? await Task.sleep(for: .milliseconds(300))
+            guard !Task.isCancelled else { return }
+            performSearch(text)
+        }
     }
 
     private func performSearch(_ searchText: String) {

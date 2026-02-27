@@ -9,9 +9,13 @@ import Foundation
 import SwiftUI
 import SwiftData
 
+private struct DependencyContainerKey: EnvironmentKey {
+    static let defaultValue: DependencyContainer = .shared
+}
+
 // MARK: - Dependency Container
 
-final class DependencyContainer {
+final class DependencyContainer: @unchecked Sendable {
 
     static let shared = DependencyContainer()
 
@@ -73,15 +77,8 @@ final class DependencyContainer {
     }
 }
 
-// MARK: - Environment Key
-
-private struct DependencyContainerKey: EnvironmentKey {
-    static let defaultValue: DependencyContainer = .shared
-}
+// MARK: - Environment Entry (iOS 26.2+ ready)
 
 extension EnvironmentValues {
-    var dependencies: DependencyContainer {
-        get { self[DependencyContainerKey.self] }
-        set { self[DependencyContainerKey.self] = newValue }
-    }
+    @Entry var dependencies: DependencyContainer = .shared
 }

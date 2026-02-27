@@ -9,10 +9,10 @@ import SwiftUI
 
 struct PlayerListView: View {
 
-    @StateObject private var viewModel: PlayerListViewModel
+    @State private var viewModel: PlayerListViewModel
 
     init(viewModel: PlayerListViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel)
+        _viewModel = State(wrappedValue: viewModel)
     }
 
     var body: some View {
@@ -167,6 +167,7 @@ struct PlayerRowView: View {
                     EmptyView()
                 }
             }
+            .drawingGroup()
 
             // Player Info
             VStack(alignment: .leading, spacing: 4) {

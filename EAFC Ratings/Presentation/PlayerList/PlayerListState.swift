@@ -6,12 +6,15 @@
 //
 
 import Foundation
+import SwiftUI
 
-// MARK: - MVI State
-
-struct PlayerListState: Equatable {
+@Observable
+@MainActor
+final class PlayerListState {
     var players: [Player] = []
+    
     var displayedPlayers: [Player] = []
+
     var isLoading: Bool = false
     var isLoadingMore: Bool = false
     var error: String?
@@ -28,6 +31,8 @@ struct PlayerListState: Equatable {
     var shouldShowError: Bool {
         error != nil && !isLoading
     }
+
+    init() {}
 }
 
 // MARK: - MVI Intent

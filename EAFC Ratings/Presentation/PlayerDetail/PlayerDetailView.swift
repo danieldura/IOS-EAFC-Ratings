@@ -12,7 +12,7 @@ struct PlayerDetailView: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 24) {
+            LazyVStack(spacing: 24, pinnedViews: []) {
                 headerSection
                 basicInfoSection
                 statsSection
@@ -21,6 +21,7 @@ struct PlayerDetailView: View {
             }
             .padding()
         }
+        .scrollBounceBehavior(.basedOnSize)
         .navigationTitle(player.displayName)
         .navigationBarTitleDisplayMode(.inline)
     }
